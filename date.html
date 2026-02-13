@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Our Future Date</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>When we finally close the distance,</h2>
+    <h2>where should I take you first? ❤️</h2>
+
+    <div class="date-grid">
+
+        <!-- PINTO -->
+        <div class="date-card" onclick="pick('Yeyyyyy!! Museummm Dateeee🥰')">
+            <img src="pinto.jpg">
+            <p>Pinto Art Museum</p>
+        </div>
+
+        <!-- LULJETTA -->
+        <div class="date-card" onclick="pick('Hot spring date with you while enjoying the view? grabe dream come true!!😭❤️')">
+            <img src="garden.jpg">
+            <p>Luljetta's Hanging Gardens</p>
+        </div>
+
+
+        <!-- HINULUGANG TAKTAK -->
+        <div class="date-card" onclick="pick('I know na nakapunta kana dito, pero sama ako this time hehe💞')">
+            <img src="falls.jpg">
+            <p>Hinulugang Taktak</p>
+        </div>
+
+        <!-- CAFE FLORENTINE -->
+        <div class="date-card" onclick="pick('Coffee with you while watching the city lights… itigil ko talaga ang oras🥰')">
+            <img src="cafe.png">
+            <p>Cafe Florentine</p>
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+function pick(message){
+    showPopup(message, "video.html");
+}
+
+function showPopup(message, nextPage){
+    document.getElementById("popupText").innerText = message;
+    document.getElementById("popup").style.display = "flex";
+    window.nextPage = nextPage;
+}
+
+function closePopup(){
+    document.getElementById("popup").style.display = "none";
+    if(window.nextPage){
+        window.location.href = window.nextPage;
+    }
+}
+
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6000);
+}, 500);
+</script>
+
+<!-- POPUP -->
+<div class="modal" id="popup">
+  <div class="modal-content">
+      <p id="popupText"></p>
+      <button onclick="closePopup()">Continue ❤️</button>
+  </div>
+</div>
+
+</body>
+</html>

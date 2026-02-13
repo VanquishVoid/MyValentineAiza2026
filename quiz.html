@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Little Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>QUIZ TIME GANDAAA! 😍</h2>
+
+    <h3 id="question"></h3>
+    <div id="answers"></div>
+</div>
+
+<!-- POPUP -->
+<div class="modal" id="popup">
+  <div class="modal-content">
+      <p id="popupText"></p>
+      <button onclick="closePopup()">Continue ❤️</button>
+  </div>
+</div>
+
+<script>
+// ===============================
+// QUIZ QUESTIONS
+// ===============================
+const quiz = [
+{
+    q: "If you had to pick just one, which part of ME is your absolute favorite?",
+    a: [
+        { text: "appearance 😎", msg: " oi oi oi! keleg ako jan 🥰" },
+        { text: "personality ❤️", msg: " Eherm unserious kaya aq sometimes kaya nagagalit ka 💞" },
+        { text: "vibes ✨", msg: " Vibes talaga us ikaw mag hugas and ako mag ml para vibes.. jk 😘" },
+        { text: "All of the above ❤️", msg: " OMGGG 1000000000 score ka saken😭❤️" }
+    ]
+},
+{
+    q: "Out of all my hobbies and passions, what does your boyfriend love the most?",
+    a: [
+        { text: "Grinding on Video Games 🎮", msg: " Ayoko mag laro! gusto ko baby time! >:v🎮" },
+        { text: "Reading Manhwa 📖", msg: " Eherm reading is living. ebriday basa pero baby time parin gusto ko!" },
+        { text: "Playing the Guitar 🎸", msg: " Gagawa na ako ng kanta, tas ikaw mag sing 🎶" },
+        { text: "AIZA THE PRETTIEST❤️", msg: " SUPER DUPER ULTRA MEGA KOREKKKK!👑" }
+    ]
+},
+{
+    q: "When we finally see each other, what is the first thing you want to do?",
+    a: [
+        { text: "Super long hug 🤗", msg: " Mandatory to love 😭" },
+        { text: "Massive food trip 🍔", msg: " 1 day millionaire tayo niyan 🍟" },
+        { text: "Take 1000 pictures 📸", msg: " Tas may tiktok payan, halata ka love ✨" },
+        { text: "All of the Above 🥺", msg: " GRABE ANG GALINGG!! BEST ANSWERRR hehe 💘" }
+    ]
+},
+{
+    q: "What is the LDR secret key that kept us strong?",
+    a: [
+        { text: "Late night calls 🌙", msg: " puyat but worth it 🥺" },
+        { text: "Supporting dreams ✨", msg: " Support kita alwayss sa mga hobbies and dreams mo! ❤️" },
+        { text: "Patience & trust ❤️", msg: " This is trueee! 💞" },
+        { text: "kasi tayo talaga para sa isa't isa 💞", msg: "TAMA KA JAN LOVE!! GINAWA TAYO FOR EACH OTHER! 😘" }
+    ]
+},
+{
+    q: "Very serious question. Bakit ang GANDA mo sobra?",
+    a: [
+        { text: "In Born Beauty 👑", msg: " Grabe naman talaga gf ko, Miss Univers ka talaga 🥰" },
+        { text: "Coz I'm your Wife 💅", msg: "Myyyyyy future wifeyyy 💍" },
+        { text: "I'm the QUEEN ❤️", msg: " I kneel before your Highness 😌" },
+        { text: "I'm lucky you're mine 😭", msg: "Hehe ako yungg swerteeeee 💘" }
+    ]
+}
+];
+
+let current = 0;
+
+
+// ===============================
+// LOAD QUESTION
+// ===============================
+function loadQuestion(){
+    if(current >= quiz.length){
+        showPopup("Perfect Score ka Love!! 😘", "date.html");
+        return;
+    }
+
+    document.getElementById("question").innerText = quiz[current].q;
+
+    const ansDiv = document.getElementById("answers");
+    ansDiv.innerHTML = "";
+
+    quiz[current].a.forEach(choice => {
+        const btn = document.createElement("button");
+        btn.innerText = choice.text;
+        btn.onclick = () => answerClicked(choice.msg);
+        ansDiv.appendChild(btn);
+    });
+}
+
+
+// ===============================
+// WHEN ANSWER CLICKED
+// ===============================
+function answerClicked(message){
+    showPopup(message, null);
+    current++;
+}
+
+
+// ===============================
+// POPUP FUNCTIONS
+// ===============================
+function showPopup(message, nextPage){
+    document.getElementById("popupText").innerText = message;
+    document.getElementById("popup").style.display = "flex";
+    window.nextPage = nextPage;
+}
+
+function closePopup(){
+    document.getElementById("popup").style.display = "none";
+
+    if(window.nextPage){
+        window.location.href = window.nextPage;
+    } else {
+        loadQuestion();
+    }
+}
+
+
+// ===============================
+// FLOATING HEARTS
+// ===============================
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6000);
+}, 500);
+
+
+// START
+loadQuestion();
+
+</script>
+
+</body>
+</html>

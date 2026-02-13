@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Be My Valentine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Hi Ganda! Will you be my Valentine this Feb 14, 2026? ❤️</h1>
+
+    <!-- IMAGE HERE -->
+    <img src="yes.jpeg" class="valentine-img">
+
+    <br>
+
+    <button onclick="showPopup('Huhu why Yes lang? Dapat YES NA YES! jk hehe ❤️','thanks.html')">YES</button>
+
+    <button onclick="showPopup('Why so cold my baby why just OO? :< dapat OO LOVE hehe jk ❤️','thanks.html')">OO</button>
+
+    <button onclick="showPopup('thank u lovey I will do my best for you ❤️','thanks.html')">YES PLEASE</button>
+
+    <button onclick="showPopup('HEHEH dapat lngg, mwuaahhhh ❤️','thanks.html')">YES OFC</button>
+ 
+</div>
+
+<script>
+function showPopup(message, nextPage){
+    document.getElementById("popupText").innerText = message;
+    document.getElementById("popup").style.display = "flex";
+    window.nextPage = nextPage;
+}
+
+function closePopup(){
+    document.getElementById("popup").style.display = "none";
+    if(window.nextPage){
+        window.location.href = window.nextPage;
+    }
+}
+
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6000);
+}, 500);
+</script>
+
+<div class="modal" id="popup">
+  <div class="modal-content">
+      <p id="popupText"></p>
+      <button onclick="closePopup()">Continue ❤️</button>
+  </div>
+</div>
+
+</body>
+</html>

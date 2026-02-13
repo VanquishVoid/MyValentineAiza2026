@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Thank You</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Thank you sa pagpili sa akin ❤️</h1>
+    <p>Even with distance, you still pick us .</p>
+    <button onclick="go()">Go Here Loveyy</button>
+</div>
+
+<script>
+function go(){
+    window.location.href = "quiz.html";
+}
+
+function showPopup(message, nextPage){
+    document.getElementById("popupText").innerText = message;
+    document.getElementById("popup").style.display = "flex";
+
+    window.nextPage = nextPage;
+}
+
+function closePopup(){
+    document.getElementById("popup").style.display = "none";
+    if(window.nextPage){
+        window.location.href = window.nextPage;
+    }
+}
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6000);
+}, 500);
+
+</script>
+
+<div class="modal" id="popup">
+  <div class="modal-content">
+      <p id="popupText"></p>
+      <button onclick="closePopup()">Continue ❤️</button>
+  </div>
+</div>
+
+
+</body>
+</html>

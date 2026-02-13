@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Message For You</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+    <h2>I hope this video message makes your day, Ganda! </h2>
+
+    <video id="myVideo" controls autoplay>
+    <source src="Andrei.mp4" type="video/mp4">
+    </video>
+
+
+    <br>
+    <button onclick="go()">Continue</button>
+</div>
+
+<script>
+function go(){
+    window.location.href = "secret.html";
+}
+
+
+/* hearts */
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6000);
+}, 500);
+</script>
+
+
+</body>
+</html>
